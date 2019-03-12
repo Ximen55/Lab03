@@ -1,0 +1,108 @@
+CHECK POINT 1
+void setup() 
+{
+  Serial.begin(9600);
+
+  pinMode(8, OUTPUT);
+}
+
+void loop()
+{
+  char val;
+  if(Serial.available())
+  {
+    val=Serial.read();
+    if(val == '1')
+    {
+      digitalWrite(8,HIGH);
+      Serial.println("LED ON");
+    }
+    else if(val == '0')
+    {
+      digitalWrite(8,LOW);
+      Serial.println("LED OFF");
+      }
+   }
+}
+
+CHECK POINT  2
+
+void setup() 
+{
+ Serial.begin(9600);
+ pinMode(14, OUTPUT);
+}
+
+void loop() 
+{
+  double Vin, Analogin = 0.0;
+   int i;
+   
+   for(i=0;i<=5;i++)
+   {
+    Analogin = 0.7*Analogin+0.3*analogRead(14);
+    Vin=Analogin*2.5/4095;
+    }
+    Serial.print("analogRead=");
+    Serial.println(analogRead(14));
+    Serial.print("Vin=");
+    Serial.println(Vin);
+    delay(1000);
+}
+
+CHECK POINT  3
+
+void setup() 
+{
+  Serial.begin(9600);
+
+}
+
+void loop() 
+{
+  double sensorValue = 0;
+  double R1;
+  double Vin;
+  int i;
+ 
+   for (i=0;i<=20;i++)
+  {
+    sensorValue = 0.7* sensorValue +0.3*analogRead(A1);
+  }
+  Vin=sensorValue*2.5/4095;
+  R1=Vin*1099302/2.5;
+    Serial.print("analogRead=");
+    Serial.println(analogRead(A1));
+    Serial.print("Vin=");
+    Serial.println(Vin);
+    Serial.print("R1=");
+    Serial.println(R1);
+    delay(500);
+}
+
+
+CHECK POINT  4
+void setup() 
+{
+  Serial.begin(9600);
+
+}
+
+void loop() 
+{
+  double sensorValue = 0;
+  double R1;
+  double Vin;
+  int i;
+ 
+   for (i=0;i<=20;i++)
+  {
+    sensorValue = 0.7* sensorValue +0.3*analogRead(A2);
+  }
+  Vin=sensorValue*2.5/4095;
+    Serial.print("sensorVoltage");
+    Serial.println(analogRead(A2));
+    Serial.print("sensorValue=");
+    Serial.println(Vin);
+    delay(500);
+}
